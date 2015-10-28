@@ -4,13 +4,14 @@
 		
 		<rosparam file="$(find rockin_acquire_markerset_transform)/config/robot_pose.yaml" command="load" />
 		
-		<rosparam file="$(find rockin_acquire_markerset_transform)/acquired_transforms/transform.yaml" command="load" />
+		<!--rosparam file="$(find rockin_acquire_markerset_transform)/acquired_transforms/transform.yaml" command="load" /-->
 		
 		
-		<node name="acqirer_node"
+		<node name="acquire_node"
 			pkg="rockin_acquire_markerset_transform"
-			type="acquirer"
+			type="acquirer.py"
 			output="screen"
+			required="true"
 		/>
 		
 		<node name="mocap"
