@@ -1,0 +1,26 @@
+<launch>
+
+	<group ns="ramt">
+		
+		<rosparam file="$(find rockin_acquire_markerset_transform)/config/robot_pose.yaml" command="load" />
+		
+		<rosparam file="$(find rockin_acquire_markerset_transform)/acquired_transforms/transform.yaml" command="load" />
+		
+		
+		<node name="acqirer_node"
+			pkg="rockin_acquire_markerset_transform"
+			type="acquirer"
+			output="screen"
+		/>
+		
+		<node name="mocap"
+			pkg="mocap_optitrack" 
+			type="mocap_node"  
+			respawn="false"
+			launch-prefix=""
+			required="true">
+			<rosparam file="$(find rockin_acquire_markerset_transform)/config/mocap.yaml" command="load" />
+		</node>
+		
+	</group>    
+</launch>
