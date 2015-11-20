@@ -36,13 +36,13 @@ if __name__ == '__main__':
 			
 			# receive the robot transform and compute the robot pose
 		#	tf_listener.waitForTransform("/world", "/actual_robot", now, rospy.Duration(5.0))
-			marker_to_robot_transform = tf_listener.lookupTransform("/robot_marketset", "/world", rospy.Time(0))
+			marker_to_robot_transform = tf_listener.lookupTransform("/robot_markerset", "/world", rospy.Time(0))
 			
 			transform_captured = True
 			
-			print "/robot_marketset to /world", tf_listener.lookupTransform("/robot_marketset", "/world", rospy.Time(0))
+			print "/robot_markerset to /world", tf_listener.lookupTransform("/robot_markerset", "/world", rospy.Time(0))
 			
-			print "/world to /robot_marketset", tf_listener.lookupTransform("/world", "/robot_marketset", rospy.Time(0))
+			print "/world to /robot_markerset", tf_listener.lookupTransform("/world", "/robot_markerset", rospy.Time(0))
 			
 			( (mrt_x, mrt_y, _), mrt_rotation ) = marker_to_robot_transform
 			(_, _, mrt_theta) = tf.transformations.euler_from_quaternion(mrt_rotation)
