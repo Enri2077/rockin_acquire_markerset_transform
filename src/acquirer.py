@@ -23,7 +23,7 @@ if __name__ == '__main__':
 		try:
 			time.sleep(1.0)
 			
-			rospy.loginfo("acquiring transform from mocap")
+			print "acquiring transform from mocap"
 			
 		#	now = rospy.Time.now()
 			
@@ -40,16 +40,18 @@ if __name__ == '__main__':
 			
 			transform_captured = True
 			
-			print tf_listener.lookupTransform("/robot_marketset", "/world", rospy.Time(0))
+			print "/robot_marketset to /world", tf_listener.lookupTransform("/robot_marketset", "/world", rospy.Time(0))
+			
+			print "/world to /robot_marketset", tf_listener.lookupTransform("/world", "/robot_marketset", rospy.Time(0))
 			
 			( (mrt_x, mrt_y, _), mrt_rotation ) = marker_to_robot_transform
 			(_, _, mrt_theta) = tf.transformations.euler_from_quaternion(mrt_rotation)
 	
 			mrt_pose = (mrt_x, mrt_y, mrt_theta)
 			
-			rospy.loginfo("marker-robot transform acquired")
-			rospy.loginfo("transform: \t"+str(marker_to_robot_transform))
-			rospy.loginfo("to 2D: \t"+str(mrt_pose))
+		#	rospy.loginfo("marker-robot transform acquired")
+		#	rospy.loginfo("transform: \t"+str(marker_to_robot_transform))
+		#	rospy.loginfo("to 2D: \t"+str(mrt_pose))
 			
 			robot_info = raw_input("insert a string (without spaces) that identify the robot, es: the name of the team\t")
 			
@@ -57,14 +59,14 @@ if __name__ == '__main__':
 			
 			rospy.set_param('robot_info', robot_info)
 			
-			rospy.set_param('marker_to_robot_transform_2D', mrt_pose)
+		#	rospy.set_param('marker_to_robot_transform_2D', mrt_pose)
 			rospy.set_param('marker_to_robot_transform', marker_to_robot_transform)
 						
 #			rospy.set_param('info', "marker_to_robot_transform is the tf transform from the markerset frame to the robot frame. The robot frame is computed from robot_pose")
 			
 			os.system("rosparam dump " + filename + " " + rospy.get_namespace())
 			
-			rospy.loginfo("result dumped in " + filename)
+			print "result dumped in " + filename
 			
 		except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException), Argument:
 			rospy.loginfo("marker-robot transform not acquired")
