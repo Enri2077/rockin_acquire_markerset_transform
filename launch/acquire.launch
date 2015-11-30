@@ -2,7 +2,7 @@
 
 	<group ns="ramt">
 		
-		<rosparam file="$(find rockin_acquire_markerset_transform)/config/robot_pose.yaml" command="load" />
+		<!--rosparam file="$(find rockin_acquire_markerset_transform)/config/robot_pose.yaml" command="load" /-->
 		
 		<!--rosparam file="$(find rockin_acquire_markerset_transform)/acquired_transforms/transform.yaml" command="load" /-->
 		

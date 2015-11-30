@@ -11,10 +11,10 @@ rigid_bodies:
     pose: robot_markerset/pose
     child_frame_id: robot_markerset
     parent_frame_id: world
-#  '4':
-#    pose: robot_markerset/pose
-#    child_frame_id: robot_markerset
-#    parent_frame_id: world
+  '4':
+    pose: robot_markerset/pose
+    child_frame_id: robot_markerset
+    parent_frame_id: world
 #  '5':
 #    pose: robot_markerset/pose
 #    child_frame_id: robot_markerset
